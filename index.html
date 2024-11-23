@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>famousradio</title>
+    <style>
+        body {
+            background: linear-gradient(45deg, #73c8a9, #373b44);
+            font-family: 'Arial', sans-serif;
+            color: #ffffff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            padding: 20px;
+            width: 80%;
+            max-width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .container:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+        .header {
+            background: #1d8163;
+            padding: 10px;
+            border-radius: 10px 10px 0 0;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .player {
+            margin: 20px 0;
+        }
+        .player audio {
+            display: none; /* إخفاء مشغل الصوت */
+            width: 100%;
+            border-radius: 10px;
+        }
+        .controls {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .controls button {
+            background: #498a79;
+            border: none;
+            color: #ffffff;
+            padding: 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+        .controls button:hover {
+            background: #fcea84;
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .controls button:active {
+            background: #cfd3e4;
+            transform: scale(0.9);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>FAMOUS RADIO</h1>
+            <span style="color: #a798b6;">by Russi</span>
+        </div>
+        <div class="player">
+            <audio id="radioPlayer">
+                <source src="https://stream.zeno.fm/orde3ebxeklvv" type="audio/mpeg">
+                متصفحك لا يدعم مشغل الصوت.
+            </audio>
+        </div>
+        <div class="controls">
+            <button onclick="previous()">⏮</button>
+            <button onclick="playPause()">⏯</button>
+            <button onclick="next()">⏭</button>
+            <button onclick="mute()">🔇</button>
+        </div>
+    </div>
+
+    <script>
+        const radioPlayer = document.getElementById('radioPlayer');
+        let isPlaying = false;
+
+        function playPause() {
+            if (isPlaying) {
+                radioPlayer.pause();
+                changePlayPauseIcon('⏯');
+            } else {
+                radioPlayer.play();
+                changePlayPauseIcon('⏸');
+            }
+            isPlaying = !isPlaying;
+        }
+
+        function changePlayPauseIcon(icon) {
+            document.querySelector('.controls button:nth-child(2)').innerHTML = icon;
+        }
+
+        function mute() {
+            radioPlayer.muted = !radioPlayer.muted;
+        }
+
+        function previous() {
+            // أضف وظيفة التراجع هنا
+            console.log('الرجوع إلى المقطع السابق');
+        }
+
+        function next() {
+            // أضف وظيفة التقديم هنا
+            console.log('التقدم إلى المقطع التالي');
+        }
+    </script>
+</body>
+</html>
